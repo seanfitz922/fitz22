@@ -1,0 +1,17 @@
+; Sean Fitzgerald sef23d
+
+(defun DMAX (x) 
+    (if (null x)                                  ; Base case: If the list is empty
+      -1000000  
+      (let ((curr_max (car x)))                   ; Get the first element of the list
+        (if (not (atom curr_max))                ; Check if the current item is a list
+            (DMAX (append curr_max (cdr x)))    ; Recurse on the nested list
+            (if (> curr_max (DMAX (cdr x)))     ; If it's not a list, compare with rest
+                curr_max                        ; Update curr_max is greater
+                (DMAX (cdr x))
+            )
+        )
+      )
+    )
+)           
+(print(DMAX '(1 (4 5) ((7 (8)) 4))))
