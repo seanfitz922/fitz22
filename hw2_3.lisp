@@ -1,0 +1,17 @@
+; Sean Fitzgerald sef23d
+
+(defun BFS (tree)
+
+    (cond
+        ((NULL tree) '())  ; check tree is empty, return an empty list
+
+        
+        (( atom ( car tree )) ; If first element is atom, include in the result and continue
+        ( cons ( car tree ) ( BFS ( cdr tree ))))  ; Cons the first element with the recursive call on the rest of the tree
+
+        
+        (t ( append (BFS ( cdr tree )) ( BFS ( car tree )))) ; If the first element is a list, first process cdr and then car
+    )
+) 
+
+(print (BFS '((A (B)) C (D)))) ; prints (C A D B)

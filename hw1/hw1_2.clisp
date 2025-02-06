@@ -1,0 +1,11 @@
+; Sean Fitzgerald sef23d
+
+(defun FIB (n)
+  (if (not (atom n))                      ; Check if n is not atomic
+      (print "Error: input number")                
+      (if (or (= n 0) (= n 1))            ; Base case: if n is 0 or 1, return n
+          n  
+          (+ (FIB (- n 1)) (FIB (- n 2))) ; recursion for fib
+        )
+    )
+)
