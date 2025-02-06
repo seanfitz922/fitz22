@@ -14,4 +14,4 @@
     )
 ) 
 
-(print (BFS '((A (B)) C (D)))) ; prints (C A D B)
+; (print (BFS '((A (B)) C (D)))) ; prints (C A D B)

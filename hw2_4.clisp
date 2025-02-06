@@ -1,0 +1,26 @@
+; Sean Fitzgerald sef23d
+
+; taken from hw2_2.clisp
+(defun DLDFS (tree depth)
+    (cond 
+        ((atom tree) (if tree (list tree) '()))  ; check to see if leaf node, return as list
+        ; ((atom tree) (list tree)) this works as well but leaves NIL's in output
+
+        ((= depth 0) '()) ; stop at depth
+
+        (t (append (DLDFS (car tree) (- depth 1)) (DLDFS (cdr tree) depth))) ; traverse left -> right through child nodes, and decrement depth
+
+    ) 
+)
+
+(defun my_helper (tree max-depth current-depth)
+  (if (> current-depth max-depth) '(); base case to check depth
+    (append (DLDFS tree current-depth) (my_helper tree max-depth (+ current-depth 1))) ;Append results of DLDFS for the curr depth, recursively call my_helper with increm depth
+  )
+)
+
+(defun DFID (tree max-depth)
+  (my_helper tree max-depth 0))  ;  Start the depth-firstsearch from depth 0
+
+
+;(print (DFID '((A (B)) C (D)) 3))
