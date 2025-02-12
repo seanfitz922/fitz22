@@ -10,8 +10,8 @@
         ( cons ( car tree ) ( BFS ( cdr tree ))))  ; Cons the first element with the recursive call on the rest of the tree
 
         
-        (t ( append (BFS ( cdr tree )) ( BFS ( car tree )))) ; If the first element is a list, first process cdr and then car
+        (t ( BFS (append ( cdr tree ) ( BFS ( car tree ))))) ; If the first element is a list, first process cdr and then car
     )
 ) 
 
-; (print (BFS '((A (B)) C (D)))) ; prints (C A D B)
+;(print (BFS '((A (B)) C (D)))) ; prints (C A D B)
